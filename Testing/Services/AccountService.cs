@@ -11,11 +11,19 @@ namespace Testing.Services
     {
         public AccountService(IAccountRepository repository)
         {
+            if (repository == null)
+            {
+                throw new ArgumentNullException("repository", "A valid account repository must be supplied.");
+            }
             this.repository = repository;
         }
-        public void AddTransactionToAccount(string uniqueAccountName,
-        decimal transactionAmount)
+        public void AddTransactionToAccount(string uniqueAccountName, decimal transactionAmount)
         {
+            var account = repository.GetByName(uniqueAccountName);
+            if (account != null)
+            {
+                account.AddTransaction(transactionAmount);
+            }
         }
         private readonly IAccountRepository repository;
     }

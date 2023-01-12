@@ -8,8 +8,8 @@ namespace Testing.Interfaces
 {
     public interface IAccountRepository
     {
-        public string GetByName(string uniqueAccountName);
+        public Account GetByName(string uniqueAccountName);
 
-        public int AddTransaction(decimal transactionAmount);
+        public void AddTransaction(decimal transactionAmount);
     }
 }
