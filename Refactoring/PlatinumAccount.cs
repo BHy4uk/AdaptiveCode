@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace Refactoring
 {
-    public class PlatinumAccount
+    public class PlatinumAccount : AccountBase
     {
-        public decimal Balance
-        {
-            get;
-            set;
-        }
-        public int CalculateRewardPoints(decimal amount)
+        public override int CalculateRewardPoints(decimal amount)
         {
             return Math.Max((int) decimal.Ceiling(
             (Balance / PlatinumBalanceCostPerPoint) +

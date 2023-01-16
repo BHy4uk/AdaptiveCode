@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace Refactoring
 {
-    public class GoldAccount
+    public class GoldAccount : AccountBase
     {
-        public decimal Balance
-        {
-            get;
-            set;
-        }
-        public int CalculateRewardPoints(decimal amount)
+        public override int CalculateRewardPoints(decimal amount)
         {
             return Math.Max((int) decimal.Floor((Balance /
             GoldBalanceCostPerPoint) + (amount /
