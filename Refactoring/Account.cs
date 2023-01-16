@@ -9,14 +9,17 @@ namespace Refactoring
             AccountBase account = null;
             switch (type)
             {
-                case AccountType.Silver :
-                        account = new SilverAccount();
+                case AccountType.Bronze:
+                    account = new BronzeAccount();
                     break;
-                case AccountType.Gold : 
-                        account = new GoldAccount();
+                case AccountType.Silver:
+                    account = new SilverAccount();
                     break;
-                case AccountType.Platinum : 
-                        account = new PlatinumAccount();
+                case AccountType.Gold:
+                    account = new GoldAccount();
+                    break;
+                case AccountType.Platinum:
+                    account = new PlatinumAccount();
                     break;
             }
             return account;
