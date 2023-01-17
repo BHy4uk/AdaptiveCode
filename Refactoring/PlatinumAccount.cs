@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Refactoring.Interfaces;
 
 namespace Refactoring
 {
-    public class PlatinumAccount : AccountBase
+    internal class PlatinumRewardCard : IRewardCard
     {
-        public override int CalculateRewardPoints(decimal amount)
+        public int RewardPoints
         {
-            return Math.Max((int) decimal.Ceiling(
-            (Balance / PlatinumBalanceCostPerPoint) +
-            (amount / PlatinumTransactionCostPerPoint)), 0);
+            get;
+            private set;
+        }
+        public void CalculateRewardPoints(decimal transactionAmount,
+        decimal accountBalance)
+        {
+            RewardPoints += Math.Max((int) decimal.Ceiling(
+            (accountBalance / PlatinumBalanceCostPerPoint) +
+            (transactionAmount / PlatinumTransactionCostPerPoint)), 0);
         }
         private const int PlatinumTransactionCostPerPoint = 2;
         private const int PlatinumBalanceCostPerPoint = 1000;

@@ -1,44 +1,24 @@
 ﻿using Refactoring.Enums;
+using Refactoring.Interfaces;
 
 namespace Refactoring
 {
-    public abstract class AccountBase
+    public class Account
     {
-        public static AccountBase CreateType(AccountType type)
+        public Account(IRewardCard rewardCard)
         {
-            AccountBase account = null;
-            switch (type)
-            {
-                case AccountType.Bronze:
-                    account = new BronzeAccount();
-                    break;
-                case AccountType.Silver:
-                    account = new SilverAccount();
-                    break;
-                case AccountType.Gold:
-                    account = new GoldAccount();
-                    break;
-                case AccountType.Platinum:
-                    account = new PlatinumAccount();
-                    break;
-            }
-            return account;
+            this.rewardCard = rewardCard;
         }
         public decimal Balance
         {
             get;
             private set;
         }
-        public int RewardPoints
-        {
-            get;
-            private set;
-        }
         public void AddTransaction(decimal amount)
         {
-            RewardPoints += CalculateRewardPoints(amount);
+            rewardCard.CalculateRewardPoints(amount, Balance);
             Balance += amount;
         }
-        public abstract int CalculateRewardPoints(decimal amount);
+        private readonly IRewardCard rewardCard;
     }
 }

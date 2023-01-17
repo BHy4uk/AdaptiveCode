@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Refactoring.Interfaces;
 
 namespace Refactoring
 {
-    internal class BronzeAccount : AccountBase
+    internal class BronzeRewardCard : IRewardCard
     {
-        public override int CalculateRewardPoints(decimal amount)
+        public int RewardPoints
         {
-            return Math.Max((int) decimal.Floor(amount /
+            get;
+            private set;
+        }
+        public void CalculateRewardPoints(decimal transactionAmount,
+        decimal accountBalance)
+        {
+            RewardPoints += Math.Max((int) decimal.Floor(transactionAmount /
             BronzeTransactionCostPerPoint), 0);
         }
         private const int BronzeTransactionCostPerPoint = 20;
