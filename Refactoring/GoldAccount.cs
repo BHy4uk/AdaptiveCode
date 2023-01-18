@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Refactoring
 {
-    public class GoldAccount : AccountBase
+    public class GoldAccount 
     {
-        public override int CalculateRewardPoints(decimal amount)
+        public int CalculateRewardPoints(decimal amount)
         {
             return Math.Max((int) decimal.Floor((Balance /
             GoldBalanceCostPerPoint) + (amount /
@@ -13,5 +13,7 @@ namespace Refactoring
         }
         private const int GoldTransactionCostPerPoint = 5;
         private const int GoldBalanceCostPerPoint = 2000;
+
+        public int Balance { get; set; }
     }
 }
