@@ -1,6 +1,6 @@
 ﻿using Refactoring.Interfaces;
 
-namespace Refactoring
+namespace Refactoring.SubAccountClasses
 {
     internal class PlatinumRewardCard : IRewardCard
     {
@@ -12,9 +12,9 @@ namespace Refactoring
         public void CalculateRewardPoints(decimal transactionAmount,
         decimal accountBalance)
         {
-            RewardPoints += Math.Max((int) decimal.Ceiling(
-            (accountBalance / PlatinumBalanceCostPerPoint) +
-            (transactionAmount / PlatinumTransactionCostPerPoint)), 0);
+            RewardPoints += Math.Max((int)decimal.Ceiling(
+            accountBalance / PlatinumBalanceCostPerPoint +
+            transactionAmount / PlatinumTransactionCostPerPoint), 0);
         }
         private const int PlatinumTransactionCostPerPoint = 2;
         private const int PlatinumBalanceCostPerPoint = 1000;
