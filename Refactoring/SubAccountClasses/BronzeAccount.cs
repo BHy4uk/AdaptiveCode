@@ -1,6 +1,6 @@
 ﻿using Refactoring.Interfaces;
 
-namespace Refactoring
+namespace Refactoring.SubAccountClasses
 {
     internal class BronzeRewardCard : IRewardCard
     {
@@ -12,7 +12,7 @@ namespace Refactoring
         public void CalculateRewardPoints(decimal transactionAmount,
         decimal accountBalance)
         {
-            RewardPoints += Math.Max((int) decimal.Floor(transactionAmount /
+            RewardPoints += Math.Max((int)decimal.Floor(transactionAmount /
             BronzeTransactionCostPerPoint), 0);
         }
         private const int BronzeTransactionCostPerPoint = 20;

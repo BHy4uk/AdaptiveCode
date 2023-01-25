@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Refactoring
+namespace Refactoring.SubAccountClasses
 {
-    public class GoldAccount 
+    public class GoldAccount
     {
         public int CalculateRewardPoints(decimal amount)
         {
-            return Math.Max((int) decimal.Floor((Balance /
-            GoldBalanceCostPerPoint) + (amount /
-            GoldTransactionCostPerPoint)), 0);
+            return Math.Max((int)decimal.Floor(Balance /
+            GoldBalanceCostPerPoint + amount /
+            GoldTransactionCostPerPoint), 0);
         }
         private const int GoldTransactionCostPerPoint = 5;
         private const int GoldBalanceCostPerPoint = 2000;
